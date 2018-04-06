@@ -1,4 +1,4 @@
-Rails[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
+[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
 # rails-api-campus-server
 
@@ -10,12 +10,13 @@ repository with a reference README.
 -   [Rails API: Many-to-Many](https://git.generalassemb.ly/ga-wdi-boston/rails-api-many-to-many)
 
 Each talk is designed to walk through the creation of a real Rails API,
-feature-by-feature, using "error driven development". Developers should have
-completed the introductory [Rails
-API](https://git.generalassemb.ly/ga-wdi-boston/rails-api) talk. This sequence ends with
-[Rails API: Behavior-Driven
-Development](https://git.generalassemb.ly/ga-wdi-boston/rails-api-bdd), where
-error-driven-development is replaced by automated testing.
+feature-by-feature, using "error driven development". 
+
+During the sequence, we will be building the following features for this API.
+
+-   [Library](docs/library.md)
+-   [Hospital](docs/hospital.md)
+-   [Cafeteria](docs/cafeteria.md)
 
 The API contains a few important branches:
 
