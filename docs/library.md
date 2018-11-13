@@ -5,6 +5,7 @@
 ## Library Documentation
 
 ### User Stories
+
 - Version 1:
   - As a user, I want to view a single book
   - As a user, I want to view all books
@@ -48,10 +49,11 @@
   - As a user, I want books to have many borrowers
 
 ### Entity Relationship Diagrams
+
 ![ERD Library](https://git.generalassemb.ly/storage/user/3667/files/41f4659c-ce2e-11e7-8e42-a1adbefc1bd5)
 
 ## [License](LICENSE)
 
-1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
-1.  All software code is licensed under GNU GPLv3. For commercial use or
+1. All content is licensed under a CC­BY­NC­SA 4.0 license.
+1. All software code is licensed under GNU GPLv3. For commercial use or
     alternative licensing, please contact legal@ga.co.

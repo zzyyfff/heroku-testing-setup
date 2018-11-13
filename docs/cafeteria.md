@@ -40,13 +40,15 @@
   - As a user, I want to delete an recipe
   - As a user, I want to assign multiple ingredients to a recipe
   - As a user, I want to assign multiple recipes to an ingredient
-  - As a user, I want to create a RecipeIngredient with an amount and unit that is specific for an ingredient being used with a specific recipe
+  - As a user, I want to create a RecipeIngredient with an amount and unit that
+    is specific for an ingredient being used with a specific recipe
 
 ### Entity Relationship Diagrams
+
 ![ERD Cookbook](https://git.generalassemb.ly/storage/user/3667/files/3c4edcb2-ce2e-11e7-9867-9b6d7544d621)
 
 ## [License](LICENSE)
 
-1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
-1.  All software code is licensed under GNU GPLv3. For commercial use or
+1. All content is licensed under a CC­BY­NC­SA 4.0 license.
+1. All software code is licensed under GNU GPLv3. For commercial use or
     alternative licensing, please contact legal@ga.co.
