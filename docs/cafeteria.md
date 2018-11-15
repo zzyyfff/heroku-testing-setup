@@ -9,43 +9,196 @@
 - Version 1
   - As a user, I want to view a single ingredient
   - As a user, I want to view all ingredients
-  - As a user, I want to create a ingredient with name and unit
-  - As a user, I want to edit a ingredient's name and unit
-  - As a user, I want to delete a ingredient
+  - As a user, I want to create an ingredient with name and unit
+  - As a user, I want to edit an ingredient's name and unit
+  - As a user, I want to delete an ingredient
 
 - Version 2
   - As a user, I want to view a single ingredient
   - As a user, I want to view all ingredients
-  - As a user, I want to create a ingredient with name and unit
-  - As a user, I want to edit a ingredient's name and unit
-  - As a user, I want to delete a ingredient
+  - As a user, I want to create an ingredient with name and unit
+  - As a user, I want to edit an ingredient's name and unit
+  - As a user, I want to delete an ingredient
   - As a user, I want to view a recipe
   - As a user, I want to view all recipes
-  - As a user, I want to create an recipe with a name and description
-  - As a user, I want to edit an recipe's name and description
-  - As a user, I want to delete an recipe
+  - As a user, I want to create a recipe with a name and description
+  - As a user, I want to edit a recipe's name and description
+  - As a user, I want to delete a recipe
   - As a user, I want to assign a single recipe to an ingredient
   - As a user, I want to assign multiple ingredients to a recipe
 
 - Version 3
   - As a user, I want to view a single ingredient
   - As a user, I want to view all ingredients
-  - As a user, I want to create a ingredient with a name
-  - As a user, I want to edit a ingredient's name
-  - As a user, I want to delete a ingredient
+  - As a user, I want to create an ingredient with a name
+  - As a user, I want to edit an ingredient's name
+  - As a user, I want to delete an ingredient
   - As a user, I want to view a recipe
   - As a user, I want to view all recipes
-  - As a user, I want to create an recipe with a name and description
-  - As a user, I want to edit an recipe's name and description
-  - As a user, I want to delete an recipe
+  - As a user, I want to create a recipe with a name and description
+  - As a user, I want to edit a recipe's name and description
+  - As a user, I want to delete a recipe
   - As a user, I want to assign multiple ingredients to a recipe
   - As a user, I want to assign multiple recipes to an ingredient
   - As a user, I want to create a RecipeIngredient with an amount and unit that
-    is specific for an ingredient being used with a specific recipe
+    is specific for an ingredient being used in a specific recipe
 
 ### Entity Relationship Diagrams
 
-![ERD Cookbook](https://git.generalassemb.ly/storage/user/3667/files/3c4edcb2-ce2e-11e7-9867-9b6d7544d621)
+#### Version 1
+
+**Ingredients**
+
+<table>
+  <th colspan="2" style="text-align:center">Ingredients</th>
+  <tr>
+    <td>id</td>
+    <td>primary key</td>
+  </tr>
+  <tr>
+    <td>name</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>unit</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>created_at</td>
+    <td>datetime</td>
+  </tr>
+  <tr>
+    <td>updated_at</td>
+    <td>datetime</td>
+  </tr>
+</table>
+
+#### Version 2
+
+`Ingredients` -|--< `Recipes`
+
+**Ingredients** belongs to **Recipe**
+
+**Recipe** has many **Ingredients**
+
+<table style="display:inline">
+  <th colspan="2" style="text-align:center">Ingredients</th>
+  <th colspan="2" style="text-align:center">
+  Recipes
+  </th>
+  <tr>
+    <td>id</td>
+    <td>primary key</td>
+    <td>id</td>
+    <td>primary key</td>
+  </tr>
+  <tr>
+    <td>name</td>
+    <td>string</td>
+    <td>name</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>unit</td>
+    <td>string</td>
+    <td>description</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>recipe_id</td>
+    <td>foreign key</td>
+    <td>created_at</td>
+    <td>datetime</td>
+  </tr>
+  <tr>
+    <td>created_at</td>
+    <td>datetime</td>
+    <td>updated_at</td>
+    <td>datetime</td>
+  </tr>
+  <tr>
+    <td>updated_at</td>
+    <td>string</td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+#### Version 3
+
+`Ingredients` -|--< `RecipeIngredients` >--|- `Recipes`
+
+**Ingredients** have many **Recipes** through **RecipeIngredients**
+
+**Recipes** have many **Ingredients** through **RecipeIngredients**
+
+**RecipeIngredients** belongs to both an **Ingredient** and a **Recipe**
+
+<table style="display:inline">
+  <th colspan="2" style="text-align:center">Ingredients</th>
+  <th colspan="2" style="text-align:center">
+  RecipeIngredients
+  </th>
+  <th colspan="2" style="text-align:center">
+  Recipes
+  </th>
+  <tr>
+    <td>id</td>
+    <td>primary key</td>
+    <td>id</td>
+    <td>primary key</td>
+    <td>id</td>
+    <td>primary key</td>
+  </tr>
+  <tr>
+    <td>name</td>
+    <td>string</td>
+    <td>amount</td>
+    <td>integer</td>
+    <td>name</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>created_at</td>
+    <td>datetime</td>
+    <td>unit</td>
+    <td>string</td>
+    <td>description</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>updated_at</td>
+    <td>datetime</td>
+    <td>recipe_id</td>
+    <td>foreign key</td>
+    <td>created_at</td>
+    <td>datetime</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>ingredient_id</td>
+    <td>foreign key</td>
+    <td>updated_at</td>
+    <td>datetime</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>created_at</td>
+    <td>datetime</td>
+    <td>updated_at</td>
+    <td>datetime</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>updated_at</td>
+    <td>datetime</td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
 
 ## [License](LICENSE)
 

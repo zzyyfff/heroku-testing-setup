@@ -45,12 +45,177 @@
   - As a user, I want to create a borrower with a given name and family name
   - As a user, I want to edit a borrower's given name and family name
   - As a user, I want to delete a borrower
-  - As a user, I want borrowers to have many books
-  - As a user, I want books to have many borrowers
+  - As a user, I want borrowers to loan many books
+  - As a user, I want books to be loaned by many borrowers
 
 ### Entity Relationship Diagrams
 
-![ERD Library](https://git.generalassemb.ly/storage/user/3667/files/41f4659c-ce2e-11e7-8e42-a1adbefc1bd5)
+#### Version 1
+
+**Books**
+
+<table>
+  <th colspan="2" style="text-align:center">Books</th>
+  <tr>
+    <td>id</td>
+    <td>primary key</td>
+  </tr>
+  <tr>
+    <td>title</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>author</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>created_at</td>
+    <td>datetime</td>
+  </tr>
+  <tr>
+    <td>updated_at</td>
+    <td>datetime</td>
+  </tr>
+</table>
+
+#### Version 2
+
+`Books` -|--< `Authors`
+
+**Books** belong to **Author**
+
+**Author** has many **Books**
+
+<table style="display:inline">
+  <th colspan="2" style="text-align:center">Books</th>
+  <th colspan="2" style="text-align:center">
+  Authors
+  </th>
+  <tr>
+    <td>id</td>
+    <td>primary key</td>
+    <td>id</td>
+    <td>primary key</td>
+  </tr>
+  <tr>
+    <td>title</td>
+    <td>string</td>
+    <td>first_name</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>author_id</td>
+    <td>foreign key</td>
+    <td>last_name</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>created_at</td>
+    <td>datetime</td>
+    <td>created_at</td>
+    <td>datetime</td>
+  </tr>
+  <tr>
+    <td>updated_at</td>
+    <td>datetime</td>
+    <td>updated_at</td>
+    <td>datetime</td>
+  </tr>
+</table>
+
+#### Version 3
+
+`Books` -|--< `Authors`
+
+`Books` -|--< `Loans` >--|- `Borrowers`
+
+**Books** belong to **Author**
+
+**Author** has many **Books**
+
+**Books** have many **Borrowers** through **Loans**
+
+**Borrowers** have many **Books** through **Loans**
+
+**Loans** belongs to both a **Book** and a **Borrower**
+
+<table style="display:inline">
+<th colspan="2" style="text-align:center">
+Books
+</th>
+  <th colspan="2" style="text-align:center">Authors</th>
+  <tr>
+    <td>id</td>
+    <td>primary key</td>
+    <td>id</td>
+    <td>primary key</td>
+  </tr>
+  <tr>
+    <td>title</td>
+    <td>string</td>
+    <td>first_name</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>author_id</td>
+    <td>foreign key</td>
+    <td>last_name</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>created_at</td>
+    <td>datetime</td>
+    <td>created_at</td>
+    <td>datetime</td>
+  </tr>
+  <tr>
+    <td>updated_at</td>
+    <td>datetime</td>
+    <td>updated_at</td>
+    <td>datetime</td>
+  </tr>
+</table>
+
+<br>
+
+<table style="display:inline">
+  <th colspan="2" style="text-align:center">
+  Loans
+  </th>
+  <th colspan="2" style="text-align:center">
+  Borrowers
+  </th>
+  <tr>
+    <td>id</td>
+    <td>primary key</td>
+    <td>id</td>
+    <td>primary key</td>
+  </tr>
+  <tr>
+    <td>borrower_id</td>
+    <td>foreign key</td>
+    <td>first_name</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>book_id</td>
+    <td>foreign key</td>
+    <td>last_name</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>created_at</td>
+    <td>datetime</td>
+    <td>created_at</td>
+    <td>datetime</td>
+  </tr>
+  <tr>
+    <td>updated_at</td>
+    <td>datetime</td>
+    <td>updated_at</td>
+    <td>datetime</td>
+  </tr>
+</table>
 
 ## [License](LICENSE)
 
