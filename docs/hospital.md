@@ -9,45 +9,241 @@
 - Version 1
   - As a user, I want to view a single patient
   - As a user, I want to view all patients
-  - As a user, I want to create a patient with a first name, last name, diagnosis and born on
-  - As a user, I want to edit a patient's first name, last name, diagnosis and born on
+  - As a user, I want to create a patient with a first name, last name,
+    diagnosis and born on
+  - As a user, I want to edit a patient's first name, last name, diagnosis and
+    born on
   - As a user, I want to delete a patient
 
 - Version 2
   - As a user, I want to view a single patient
   - As a user, I want to view all patients
-  - As a user, I want to create a patient with a first name, last name, diagnosis and born on
-  - As a user, I want to edit a patient's first name, last name, diagnosis and born on
+  - As a user, I want to create a patient with a first name, last name,
+    diagnosis and born on
+  - As a user, I want to edit a patient's first name, last name, diagnosis and
+    born on
   - As a user, I want to delete a patient
-  - As a user, I want to view an doctor
+  - As a user, I want to view a doctor
   - As a user, I want to view all doctors
-  - As a user, I want to create an doctor with a given name, family name, zip code and specialty
-  - As a user, I want to edit an doctor's given name, family name, zip code and specialty
-  - As a user, I want to delete an doctor
+  - As a user, I want to create a doctor with a given name, family name, zip
+    code and specialty
+  - As a user, I want to edit a doctor's given name, family name, zip code and
+    specialty
+  - As a user, I want to delete a doctor
   - As a user, I want to assign a single doctor to a patient
   - As a user, I want to assign multiple patients to a doctor
 
 - Version 3
   - As a user, I want to view a single patient
   - As a user, I want to view all patients
-  - As a user, I want to create a patient with a first name, last name, diagnosis and born on
-  - As a user, I want to edit a patient's first name, last name, diagnosis and born on
+  - As a user, I want to create a patient with a first name, last name,
+    diagnosis and born on
+  - As a user, I want to edit a patient's first name, last name, diagnosis and
+    born on
   - As a user, I want to delete a patient
-  - As a user, I want to view an doctor
+  - As a user, I want to view a doctor
   - As a user, I want to view all doctors
-  - As a user, I want to create an doctor with a given name, family name, zip code and specialty
-  - As a user, I want to edit an doctor's given name, family name, zip code and specialty
-  - As a user, I want to delete an doctor
-  - As a user, I want to assign a primary doctor to a patient
-  - As a user, I want to assign multiple patients to a primary doctor
+  - As a user, I want to create a doctor with a given name, family name, zip
+    code and specialty
+  - As a user, I want to edit a doctor's given name, family name, zip code and
+    specialty
+  - As a user, I want to delete a doctor
+  - As a user, I want to assign a single doctor to a patient as their primary care physician
+  - As a user, I want to assign multiple patients to a doctor as their primary care recipient
   - As a user, I want to create an appointment between a patient and a doctor
   - As a user, I want to delete an appointment between a patient and a doctor
 
 ### Entity Relationship Diagrams
-![ERD Clinic](https://git.generalassemb.ly/storage/user/3667/files/4e3c51d4-ce2e-11e7-9d36-8379102225c9)
+
+#### Version 1
+
+**Patients**
+
+<table>
+  <th colspan="2" style="text-align:center">Patients</th>
+  <tr>
+    <td>id</td>
+    <td>primary key</td>
+  </tr>
+  <tr>
+    <td>first_name</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>last_name</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>diagnosis</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>born_on</td>
+    <td>date</td>
+  </tr>
+  <tr>
+    <td>created_at</td>
+    <td>datetime</td>
+  </tr>
+  <tr>
+    <td>updated_at</td>
+    <td>datetime</td>
+  </tr>
+</table>
+
+#### Version 2
+
+`Patients` -|--< `Doctors`
+
+**Patients** belong to **Doctor**
+
+**Doctor** has many **Patients**
+
+<table style="display:inline">
+  <th colspan="2" style="text-align:center">Patients</th>
+  <th colspan="2" style="text-align:center">
+  Doctors
+  </th>
+  <tr>
+    <td>id</td>
+    <td>primary key</td>
+    <td>id</td>
+    <td>primary key</td>
+  </tr>
+  <tr>
+    <td>first_name</td>
+    <td>string</td>
+    <td>first_name</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>last_name</td>
+    <td>string</td>
+    <td>last_name</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>diagnosis</td>
+    <td>string</td>
+    <td>zip_code</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>born_on</td>
+    <td>date</td>
+    <td>specialty</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>doctor_id</td>
+    <td>foreign key</td>
+    <td>created_at</td>
+    <td>datetime</td>
+  </tr>
+  <tr>
+    <td>created_at</td>
+    <td>datetime</td>
+    <td>updated_at</td>
+    <td>datetime</td>
+  </tr>
+  <tr>
+    <td>updated_at</td>
+    <td>datetime</td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+#### Version 3
+
+`Patients` -|--< `Appointments` >--|- `Doctors`
+
+**Patients** have many **Doctors** through **Appointments**
+
+**Doctors** have many **Patients** through **Appointments**
+
+**Appointments** belongs to both a **Patient** and a **Doctor**
+
+**Patients** belongs to **Doctor** as _Primary Care Physician_
+
+**Doctor** as _Primary Care Physician_ has many **Patients**
+
+<table style="display:inline">
+  <th colspan="2" style="text-align:center">Patients</th>
+  <th colspan="2" style="text-align:center">
+  Appointments
+  </th>
+  <th colspan="2" style="text-align:center">
+  Doctors
+  </th>
+  <tr>
+    <td>id</td>
+    <td>primary key</td>
+    <td>id</td>
+    <td>primary key</td>
+    <td>id</td>
+    <td>primary key</td>
+  </tr>
+  <tr>
+    <td>first_name</td>
+    <td>string</td>
+    <td>patient_id</td>
+    <td>foreign key</td>
+    <td>first_name</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>last_name</td>
+    <td>string</td>
+    <td>doctor_id</td>
+    <td>foreign key</td>
+    <td>last_name</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>diagnosis</td>
+    <td>string</td>
+    <td>created_at</td>
+    <td>datetime</td>
+    <td>zip_code</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>born_on</td>
+    <td>date</td>
+    <td>updated_at</td>
+    <td>datetime</td>
+    <td>specialty</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>doctor_id</td>
+    <td>foreign key</td>
+    <td></td>
+    <td></td>
+    <td>created_at</td>
+    <td>datetime</td>
+  </tr>
+  <tr>
+    <td>created_at</td>
+    <td>datetime</td>
+    <td></td>
+    <td></td>
+    <td>updated_at</td>
+    <td>datetime</td>
+  </tr>
+  <tr>
+    <td>updated_at</td>
+    <td>datetime</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
 
 ## [License](LICENSE)
 
-1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
-1.  All software code is licensed under GNU GPLv3. For commercial use or
+1. All content is licensed under a CC­BY­NC­SA 4.0 license.
+1. All software code is licensed under GNU GPLv3. For commercial use or
     alternative licensing, please contact legal@ga.co.
