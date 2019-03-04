@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   # Books resouce routes
   get '/books' => 'books#index'
   get '/books/:id' => 'books#show'
+  post '/books' => 'books#create'
 
   # Patients resouce routes
   get '/patients' => 'patients#index'
