@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class BooksController < ApplicationController
+  before_action :set_book, only: %i[update destroy]
+
   def index
     @books = Book.all
     render json: @books
@@ -18,6 +20,24 @@ class BooksController < ApplicationController
     else
       render json: @book.errors, status: :unprocessable_entity
     end
+  end
+
+  def update
+    if @book.update(book_params)
+      render jason: @book
+    else
+      render json: @book.errors, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @book.destroy
+
+    head :no_content
+  end
+
+  def set_book
+    @book = Book.find(params[:id])
   end
 
   def book_params
