@@ -1,16 +1,14 @@
 #!/bin/bash
 
-curl "http://localhost:4741/patients" \
+curl "http://localhost:4741/patients/${ID}" \
   --include \
-  --request POST \
+  --request PATCH \
   --header "Content-Type: application/json" \
   --header "Authorization: Token token=${TOKEN}" \
   --data '{
     "patient": {
       "first_name": "'"${FIRST_NAME}"'",
-      "last_name": "'"${LAST_NAME}"'",
-      "diagnosis": "'"${DIAGNOSIS}"'",
-      "born_on": "'"${BORN_ON}"'"
+      "last_name": "'"${LAST_NAME}"'"
     }
   }'
 

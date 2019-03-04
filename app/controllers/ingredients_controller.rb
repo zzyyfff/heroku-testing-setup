@@ -9,7 +9,7 @@ class IngredientsController < ApplicationController
   end
 
   def show
-    render json: Ingredient.find(params[:id])
+    render json: @ingredient
   end
 
   def create

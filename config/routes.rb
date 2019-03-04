@@ -11,23 +11,26 @@ Rails.application.routes.draw do
   patch '/change-password' => 'users#changepw'
 
   # Books resouce routes
-  get '/books' => 'books#index'
-  get '/books/:id' => 'books#show'
-  post '/books' => 'books#create'
-  patch '/books/:id' => 'books#update'
-  delete '/books/:id' => 'books#destroy'
+  resources :books, except: %i[new edit]
+  # get '/books' => 'books#index'
+  # get '/books/:id' => 'books#show'
+  # post '/books' => 'books#create'
+  # patch '/books/:id' => 'books#update'
+  # delete '/books/:id' => 'books#destroy'
 
   # Patients resouce routes
-  get '/patients' => 'patients#index'
-  get '/patients/:id' => 'patients#show'
-  post '/patients' => 'patients#create'
-  patch '/patients/:id' => 'patients#update'
-  delete '/patients/:id' => 'patients#destroy'
+  resources :patients, except: %i[new edit]
+  # get '/patients' => 'patients#index'
+  # get '/patients/:id' => 'patients#show'
+  # post '/patients' => 'patients#create'
+  # patch '/patients/:id' => 'patients#update'
+  # delete '/patients/:id' => 'patients#destroy'
 
   # Ingredients resouce routes
-  get '/ingredients' => 'ingredients#index'
-  get '/ingredients/:id' => 'ingredients#show'
-  post '/ingredients' => 'ingredients#create'
-  patch '/ingredients/:id' => 'ingredients#update'
-  delete '/ingredients/:id' => 'ingredients#destroy'
+  resources :ingredients, except: %i[new edit]
+  # get '/ingredients' => 'ingredients#index'
+  # get '/ingredients/:id' => 'ingredients#show'
+  # post '/ingredients' => 'ingredients#create'
+  # patch '/ingredients/:id' => 'ingredients#update'
+  # delete '/ingredients/:id' => 'ingredients#destroy'
 end
