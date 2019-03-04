@@ -20,8 +20,14 @@ Rails.application.routes.draw do
   # Patients resouce routes
   get '/patients' => 'patients#index'
   get '/patients/:id' => 'patients#show'
+  post '/patients' => 'patients#create'
+  patch '/patients/:id' => 'patients#update'
+  delete '/patients/:id' => 'patients#destroy'
 
   # Ingredients resouce routes
   get '/ingredients' => 'ingredients#index'
   get '/ingredients/:id' => 'ingredients#show'
+  post '/ingredients' => 'ingredients#create'
+  patch '/ingredients/:id' => 'ingredients#update'
+  delete '/ingredients/:id' => 'ingredients#destroy'
 end
