@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # Authors resource routes
   resources :authors, except: %i[new edit]
 
-  # Books resouce routes
+  # Books resource routes
   resources :books, except: %i[new edit]
   # get '/books' => 'books#index'
   # get '/books/:id' => 'books#show'
@@ -21,7 +21,10 @@ Rails.application.routes.draw do
   # patch '/books/:id' => 'books#update'
   # delete '/books/:id' => 'books#destroy'
 
-  # Patients resouce routes
+  # Doctors resource routes
+  resources :doctors, except: %i[new edit]
+
+  # Patients resource routes
   resources :patients, except: %i[new edit]
   # get '/patients' => 'patients#index'
   # get '/patients/:id' => 'patients#show'
@@ -29,7 +32,7 @@ Rails.application.routes.draw do
   # patch '/patients/:id' => 'patients#update'
   # delete '/patients/:id' => 'patients#destroy'
 
-  # Ingredients resouce routes
+  # Ingredients resource routes
   resources :ingredients, except: %i[new edit]
   # get '/ingredients' => 'ingredients#index'
   # get '/ingredients/:id' => 'ingredients#show'
