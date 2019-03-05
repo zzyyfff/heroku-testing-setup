@@ -32,6 +32,9 @@ Rails.application.routes.draw do
   # patch '/patients/:id' => 'patients#update'
   # delete '/patients/:id' => 'patients#destroy'
 
+  # Recipes resource routes
+  resources :recipes, except: %i[new edit]
+
   # Ingredients resource routes
   resources :ingredients, except: %i[new edit]
   # get '/ingredients' => 'ingredients#index'
