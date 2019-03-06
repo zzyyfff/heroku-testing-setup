@@ -21,6 +21,15 @@ Rails.application.routes.draw do
   # patch '/books/:id' => 'books#update'
   # delete '/books/:id' => 'books#destroy'
 
+  # Loans resource routes
+  resources :loans, except: %i[new edit]
+
+  # Borrowers resource routes
+  resources :borrowers, except: %i[new edit]
+
+  # Appointments resource routes
+  resources :appointments, except: %i[new edit]
+
   # Doctors resource routes
   resources :doctors, except: %i[new edit]
 
